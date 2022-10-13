@@ -18,13 +18,15 @@ class Solution {
 public:
     double myPow(double x, int n) {
         
-        if (n==0) return 1;
+//         if (n==0) return 1;
         
-        bool isNeg = n<0;
-        n = abs(n);
+//         bool isNeg = n<0;
+//         n = abs(n);
         
-        double ans = fastPow(x,n);
+//         double ans = fastPow(x,n);
         
-        return isNeg? 1/ans: ans;
+//         return isNeg? 1/ans: ans;
+        
+        return pow(x,n);
     }
 };
