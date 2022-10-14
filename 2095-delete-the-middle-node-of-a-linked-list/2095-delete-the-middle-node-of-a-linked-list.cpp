@@ -10,11 +10,6 @@
  */
 class Solution {
     
-    // void deleteListNode(ListNode* node) {
-    //     if (!node or !nodfile->next) node = NULL;
-    //     else *node = *node->next;
-    // }
-    
 public:
     ListNode* deleteMiddle(ListNode* head) {
         
