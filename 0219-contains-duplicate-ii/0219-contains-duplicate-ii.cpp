@@ -11,11 +11,6 @@ public:
             idxMap[nums[i]] = i;
         }
         
-        
-        for (auto el: idxMap) {
-            cout << el.first << ' ' << el.second << '\n';
-        }
-        
         return false;
     }
 };
