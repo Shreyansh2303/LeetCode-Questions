@@ -11,51 +11,24 @@
  */
 class Solution {
     
-    void construct(vector<int>& preorder, TreeNode* finalAns, int n) {
+    TreeNode* construct(vector<int>& preorder, int& i, int upperBound) {
         
-        if (n==1) {
-            finalAns->val = preorder[n-1];
-            return;
-        }
+        if (i == preorder.size() or preorder[i] > upperBound) return NULL;
         
+        TreeNode* root = new TreeNode(preorder[i++]);
         
+        root->left = construct(preorder, i, preorder[i-1]);
+        root->right = construct(preorder, i, upperBound);
         
-        construct(preorder, finalAns, n-1);
-        
-        
-        
-        TreeNode* itr = finalAns;
-        
-        while (true) {
-            
-            if (preorder[n-1] < itr->val) {
-                if (itr->left) itr = itr->left;
-                else {
-                    TreeNode* temp = new TreeNode;
-                    temp->val = preorder[n-1];
-                    itr->left = temp;
-                    break;
-                }
-            }
-            
-            else if (preorder[n-1] > itr->val) {
-                if (itr->right) itr = itr->right;
-                else {
-                    TreeNode* temp = new TreeNode;
-                    temp->val = preorder[n-1];
-                    itr->right = temp;
-                    break;
-                }
-            }
-        }
+        return root;
     }
     
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
         
-        TreeNode* finalAns = new TreeNode;
-        construct(preorder, finalAns, preorder.size());
+        int i = 0;
         
+        TreeNode* finalAns = construct(preorder, i, INT_MAX);
         
         return finalAns;
     }
